@@ -1,7 +1,7 @@
 FROM ruby:2.1
 MAINTAINER jclagache@gmail.com
 
-RUN gem install github-pages -v 28 \
+RUN gem install github-pages:28 \
 		therubyracer
 
 VOLUME /src
