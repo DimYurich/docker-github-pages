@@ -24,21 +24,21 @@ Boot2docker
 Since [boot2docker](http://boot2docker.io/) now includes [the VirtualBox Guest Additions built in](https://github.com/boot2docker/boot2docker/pull/534), you can use the VirtualBox folder sharing. Some share names will be [automatically mounted](https://github.com/boot2docker/boot2docker#user-content-virtualbox-guest-additions) but you can mount your own. In the host :  
 
 ```bash
-$ vboxmanage sharedfolder add "boot2docker-vm" --name GitHub-share--hostpath /my-awesome-site --automount
+$ vboxmanage sharedfolder add "boot2docker-vm" --name my-awesome-site-share --hostpath /my-awesome-site --automount
 ```
 
 In the guest, mount it wherever you want : 
 
 ```bash
-$ sudo mkdir /my-awesome-site
-$ sudo mount -t vboxsf -o uid=1000,gid=50 GitHub-share /my-awesome-site
+$ sudo mkdir /my-awesome-site-on-guest
+$ sudo mount -t vboxsf -o uid=1000,gid=50 my-awesome-site-share /my-awesome-site-on-guest
 ```
 
 Download the image and run the container : 
 
 ```bash
 $ docker pull jclagache/github-pages
-$ docker run --rm -p 4000:4000 -v /my-awesome-site:/src jclagache/github-pages serve --force_polling
+$ docker run --rm -p 4000:4000 -v /my-awesome-site-on-guest:/src jclagache/github-pages serve --force_polling
 ```
 
 Note that you must pass the ```--force_polling``` option to watch for changes automatically due to Jekyll ([Listen](https://github.com/guard/listen)) [vboxfs issue](https://github.com/jekyll/jekyll/issues/1808).
