@@ -16,6 +16,6 @@ Assuming `/my-awesome-site` is your local directory containing the Jekyll websit
 
 ```bash
 $ docker build -t github-pages .
-$ docker run --rm -p 4000:4000 -v /my-awesome-site:/site github-pages serve --watch
+$ docker run --rm -p 4000:4000 -v /my-awesome-site:/site github-pages
 ```
 will serve the site and watch for changes automatically at `http://localhost:4000`
