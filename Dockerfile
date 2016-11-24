@@ -2,8 +2,9 @@ FROM ruby:2.3.2-alpine
 MAINTAINER dmitry.yu.terentyev@gmail.com
 
 # ruby-dev libffi-dev
-RUN apk update && apk add build-base && \
-		gem install github-pages:104 therubyracer jekyll-github-metadata && \
+RUN apk update && apk add --no-cache build-base && \
+		gem install github-pages  \
+		#gem install jekyll-github-metadata && \
 		apk del build-base && \
 		mkdir /site
 
