@@ -1,10 +1,9 @@
-FROM ruby:2.3.2-alpine
+#FROM ruby:2.3.2-alpine
+FROM ruby:alpine
 MAINTAINER dmitry.yu.terentyev@gmail.com
 
-# ruby-dev libffi-dev
 RUN apk update && apk add --no-cache build-base && \
-		gem install github-pages  \
-		#gem install jekyll-github-metadata && \
+		gem install github-pages && \
 		apk del build-base && \
 		mkdir /site
 
